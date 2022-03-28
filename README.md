@@ -61,6 +61,16 @@ wget https://release.memsql.com/production/tar/x86_64/singlestoredb-studio-4.0.4
 wget https://release.memsql.com/production/tar/x86_64/singlestoredb-server7.6.13-39da2f5c72.x86_64.rpm
 
 ```
+
+Instalación:
+
+```sh
+sh singlestore-client-1.0.6-c3803db03b.x86_64.rpm
+sh singlestoredb-toolbox-1.13.6-289f33fe76.x86_64.rpm
+sh singlestoredb-studio-4.0.4-9aeb214606.x86_64.rpm
+
+
+``` 
  
  Estos archivos ubicalos en /home/admin/singlestore o /opt/singlestore
  
@@ -84,5 +94,12 @@ El usuario memsql no tiene shell
 
 La creación manual de un usuario memsql y un grupo solo se recomienda en un entorno sin sudo cuando se realiza una implementación basada en tarball de SingleStore DB. Para ejecutar los comandos de SingleStore DB Toolbox en un clúster, este usuario memsql creado manualmente debe configurarse para que pueda conectarse mediante SSH a cada host del clúster.
 
-SingleStore ha sido diseñado para implementarse al menos con 2 nodos
+SingleStore ha sido diseñado para implementarse al menos con 2 nodos.
+
+En el nodo maestro, ejecute la interfaz de usuario
+
+```ssh
+
+
+``` 
 
