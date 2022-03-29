@@ -99,7 +99,25 @@ SingleStore ha sido diseñado para implementarse al menos con 2 nodos.
 En el nodo maestro, ejecute la interfaz de usuario
 
 ```ssh
-
+./sdb-deploy ui
 
 ``` 
 
+Este comando mostrará un enlace con un token seguro que puede usar para implementar SingleStore DB a través de la interfaz de usuario.
+
+### Implementar la base de datos SingleStore.
+
+En este paso debe proporcionar la ruta de singlestoredb-server cuando se le solicite.
+
+### Monitoreo
+
+En su máquina de implementación principal, ejecute el siguiente comando para usar SingleStore DB Studio para monitorear e interactuar con su clúster.
+
+```sh
+
+cd /home/admin/singlestore/memsqlstudio/
+
+nohup ./singlestoredb-studio > studio.stdout 2> studio.stderr < /dev/null &
+
+```
+ 
