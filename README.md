@@ -105,7 +105,8 @@ En el nodo maestro, ejecute la interfaz de usuario
 
 Este comando mostrará un enlace con un token seguro que puede usar para implementar SingleStore DB a través de la interfaz de usuario.
 
-### Implementar la base de datos SingleStore.
+### Implementar la base de datos SingleStore.
+
 
 En este paso debe proporcionar la ruta de singlestoredb-server cuando se le solicite.
 
