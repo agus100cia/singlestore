@@ -65,9 +65,9 @@ wget https://release.memsql.com/production/rpm/x86_64/singlestoredb-server7.6.13
 Instalación:
 
 ```sh
-sh singlestore-client-1.0.6-c3803db03b.x86_64.rpm
-sh singlestoredb-toolbox-1.13.6-289f33fe76.x86_64.rpm
-sh singlestoredb-studio-4.0.4-9aeb214606.x86_64.rpm
+rpm -i singlestore-client-1.0.6-c3803db03b.x86_64.rpm
+rpm -i singlestoredb-toolbox-1.13.6-289f33fe76.x86_64.rpm
+rpm -i singlestoredb-studio-4.0.4-9aeb214606.x86_64.rpm
 
 
 ``` 
