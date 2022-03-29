@@ -223,4 +223,52 @@ sdb-admin restart-node --all
  ```
   
  
+ ## Backup
+ 
+ Se puede obtener respaldos totales o incrementales. Los respaldos totales escriben datos en un sistema de archivos local file, s3, azure, Google Cloud.
+ 
+ SingleStore no soporta un restore de base de datos desde una version nueva a una antigua.
+ 
+ ```sh
+ sdb-admin create-backup -r file:///path database1
+ 
+ ``` 
+ 
+ 
+ ## Agregar un Azure Blob Storage a Linux
+ 
+ ```sh
+ Instalar
+ sudo rpm -Uvh https://packages.microsoft.com/config/rhel/7/packages-microsoft-prod.rpm
+ sudo yum install blobfuse
+ 
+ sudo mkdir -p /mnt/resource/blobfusetmp
+ sudo chown <unix-user>:<unix-group> /mnt/resource/blobfusetmp
+ sudo chown azureuser:azureuser /mnt/resource/blobfusetmp
+ 
+ ```
+ 
+ Crear un archivo de configuracion
+ 
+ ```sh
+ nano $HOME/.fuse_connection.cfg
+ 
+ 
+ # Azure storage account name, password and the container to mount 
+accountName <your_storage_account>
+accountKey <your_storage_key> 
+containerName <your_storage_container>
+ 
+ ```
+ 
+Monta la unidad
+ 
+```sh
+ 
+blobfuse /data/azure-blob-container --tmp-path=/mnt/resource/blobfusetmp --config-file=$HOME/.fuse_connection.cfg -o attr_timeout=240 -o entry_timeout=240 -o negative_timeout=120 -o nonempty
+ 
+```
+ 
+ 
+ 
  
