@@ -90,7 +90,7 @@ El usuario que despliega SingleStoreDB mediante SingleStore DB Toolbox debe pode
 
 Cuando usted instalar singlestoredb-server via RPM o Debian pack, entonces se crea un grupo y usuario llamado memsql en cada nodo.
 
-El usuario memsql no tiene shell
+El usuario memsql no tiene shell, el usuario memsql se crea automaticamente al instalar singlestoredb-studio
 
 La creación manual de un usuario memsql y un grupo solo se recomienda en un entorno sin sudo cuando se realiza una implementación basada en tarball de SingleStore DB. Para ejecutar los comandos de SingleStore DB Toolbox en un clúster, este usuario memsql creado manualmente debe configurarse para que pueda conectarse mediante SSH a cada host del clúster.
 
