@@ -99,7 +99,7 @@ SingleStore ha sido diseñado para implementarse al menos con 2 nodos.
 En el nodo maestro, ejecute la interfaz de usuario
 
 ```ssh
-./sdb-deploy ui
+sdb-deploy ui
 
 ``` 
 
