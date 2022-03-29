@@ -211,5 +211,16 @@ sdb-admin restart-node --all
  En Mysql Workbench => Advanced => useSSL=0
  
  
+ ### SingleStore studio
+ 
+ ```sh
+ sudo yum-config-manager --add-repo https://release.memsql.com/production/rpm/x86_64/repodata/memsql.repo
+ sudo yum repolist
+ sudo yum install -y singlestoredb-studio
+ sudo systemctl start singlestoredb-studio
+ sudo systemctl enable singlestoredb-studio.service
+ 
+ ```
+  
  
  
