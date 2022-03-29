@@ -121,4 +121,95 @@ cd /home/admin/singlestore/memsqlstudio/
 nohup ./singlestoredb-studio > studio.stdout 2> studio.stderr < /dev/null &
 
 ```
+
+## Instalacion
+
+```sh
+
+sudo yum-config-manager --add-repo https://release.memsql.com/production/rpm/x86_64/repodata/memsql.repo && \
+sudo yum install -y singlestore-client singlestoredb-toolbox singlestoredb-studio
+
+``` 
+
+Levantar UI
+
+```sh
+sdb-deploy ui
+``` 
+
+Licencia:
+
+```sh
+BGRhZWI4MzA2OTQ0NDQ0NTg5MDZjNGRhZjQyOTY5ZGU3AAAAAAAAAAAEAAAAAAAAAAwwNAIYKNlup/E65cfL1x+URvxOSr0skBhrQH5RAhhgStdR3wUb0YCOGzcCuCzWsP0NfY25l+UAAA==
+
+``` 
+
+## Instacion
+
+Afinar
+
+https://docs.singlestore.com/db/v7.6/en/reference/configuration-reference/cluster-configuration/system-requirements-and-recommendations.html
+
+```sh
+
+sudo yum -y install ntp
+sudo yum -y install numactl
+
+
+sudo sysctl -w vm.swappiness=10
+sudo sysctl -w vm.max_map_count=1000000000
+sudo sysctl -w vm.min_free_kbytes=658096
+sudo sysctl -w net.core.rmem_max=8388608
+sudo sysctl -w net.core.wmem_max=8388608
+
+``` 
+
+Crear Swap
+
+```sh
+sudo dd if=/dev/zero of=/swapfile count=4096 bs=1MiB
+ls -lh /swapfile
+sudo chmod 600 /swapfile
+sudo mkswap /swapfile
+sudo swapon /swapfile
+swapon -s
+sudo nano /etc/fstab
+/swapfile   swap    swap    sw  0   0
+``` 
+
+
+Instalacion
+
+```sh
+sdb-deploy setup-cluster \
+	  --version 7.6.7 \
+      --master-host azureuser@10.0.0.4:22 \
+      --leaf-hosts 10.0.0.5,10.0.0.6 \
+      --identity-file /home/azureuser/keysinglestore.pem \
+      --license BGRhZWI4MzA2OTQ0NDQ0NTg5MDZjNGRhZjQyOTY5ZGU3AAAAAAAAAAAEAAAAAAAAAAwwNAIYKNlup/E65cfL1x+URvxOSr0skBhrQH5RAhhgStdR3wUb0YCOGzcCuCzWsP0NfY25l+UAAA== \
+      --password Ecuador01*
+      
+y
+y
+y
+y
+sdb-admin restart-node --all
+
+ ``` 
+ 
+ Ver hosts
+ 
+ ```sh
+ sdb-toolbox-config list-hosts
+ ``` 
+ 
+ Eliminar hosts
+ ```sh
+ sdb-toolbox-config unregister-host --all
+ ``` 
+ 
+ En Mysql Workbench => Advanced => useSSL=0
+ 
+ 
+ 
  
