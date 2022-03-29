@@ -55,10 +55,10 @@ wget https://release.memsql.com/production/tar/x86_64/singlestoredb-server-7.6.1
 
 RPM 
 
-wget https://release.memsql.com/production/tar/x86_64/singlestore-client-1.0.6-c3803db03b.x86_64.rpm
-wget https://release.memsql.com/production/tar/x86_64/singlestoredb-toolbox-1.13.6-289f33fe76.x86_64.rpm
-wget https://release.memsql.com/production/tar/x86_64/singlestoredb-studio-4.0.4-9aeb214606.x86_64.rpm
-wget https://release.memsql.com/production/tar/x86_64/singlestoredb-server7.6.13-39da2f5c72.x86_64.rpm
+wget https://release.memsql.com/production/rpm/x86_64/singlestore-client-1.0.6-c3803db03b.x86_64.rpm
+wget https://release.memsql.com/production/rpm/x86_64/singlestoredb-toolbox-1.13.6-289f33fe76.x86_64.rpm
+wget https://release.memsql.com/production/rpm/x86_64/singlestoredb-studio-4.0.4-9aeb214606.x86_64.rpm
+wget https://release.memsql.com/production/rpm/x86_64/singlestoredb-server7.6.13-39da2f5c72.x86_64.rpm
 
 ```
 
