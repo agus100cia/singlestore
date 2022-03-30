@@ -267,6 +267,8 @@ sudo mount -t cifs //<storage-account>.file.core.windows.net/compartido /mnt/<fi
 
  ## Cambiar el directorio de datos.
  
+ REF: https://support.singlestore.com/hc/en-us/articles/360057955312-Change-default-data-directory-path
+ 
  Planeamos cambiar el directorio de datos en el nodo maestro y mover de 
  
  /var/lib/memsql/cecd8d51-6570-416f-bd6d-9aab34d26a9c/data   a   /disk01
