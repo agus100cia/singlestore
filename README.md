@@ -162,6 +162,9 @@ vm.min_free_kbytes=658096
 net.core.rmem_max=212992
 net.core.wmem_max=212992
 
+Para todos los discos en todos los nodos
+sudo chown memsql:memsql -R /disk01
+
 ``` 
 
 Crear Swap
