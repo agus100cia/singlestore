@@ -277,6 +277,9 @@ sudo mount -t cifs //<storage-account>.file.core.windows.net/compartido /mnt/<fi
  ## Detiene el cluster
  sdb-admin stop-node --all
  
+ ## Detener un nodo
+ sdb-admin stop-node --memsql-id <NODE-ID>
+ 
  ## Verifica el estado
  sdb-admin list-nodes
  
