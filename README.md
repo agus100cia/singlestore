@@ -237,38 +237,31 @@ sdb-admin restart-node --all
  
  ## Agregar un Azure Blob Storage a Linux
  
- ```sh
- Instalar
- sudo rpm -Uvh https://packages.microsoft.com/config/rhel/7/packages-microsoft-prod.rpm
- sudo yum install blobfuse
+ Para agregar una unidad de Azure Storage a un servidor VM Linux es necesario:
  
- sudo mkdir -p /mnt/resource/blobfusetmp
- sudo chown <unix-user>:<unix-group> /mnt/resource/blobfusetmp
- sudo chown azureuser:azureuser /mnt/resource/blobfusetmp
+ 1.- Crear una carpeta compartida 
  
- ```
+ Azure portal => Storage accounts (Crear) ==> Seleccionar el Storage account ==> File shares (crear)
  
- Crear un archivo de configuracion
+ Dentro de Storage accounts => Key (Copiar la Key)
  
- ```sh
- nano $HOME/.fuse_connection.cfg
- 
- 
- # Azure storage account name, password and the container to mount 
-accountName <your_storage_account>
-accountKey <your_storage_key> 
-containerName <your_storage_container>
- 
- ```
- 
-Monta la unidad
- 
+ -	Storage accounts = almacenamientoss
+ -	File shares = compartido
+ -	Key = *******
+
+
+Con estos datos vamos a la maquina virtual y vamos a montar la unidad de almacenamiento:
+
 ```sh
- 
-blobfuse /data/azure-blob-container --tmp-path=/mnt/resource/blobfusetmp --config-file=$HOME/.fuse_connection.cfg -o attr_timeout=240 -o entry_timeout=240 -o negative_timeout=120 -o nonempty
- 
-```
- 
+sudo mkdir -p /mnt/compartido
+sudo mount -t cifs //almacenamientoss.file.core.windows.net/compartido /mnt/compartido -o vers=3.0,username=almacenamientoss,password=*********,dir_mode=0777,file_mode=0777,serverino
+
+
+sudo mount -t cifs //<storage-account>.file.core.windows.net/compartido /mnt/<file-shared> -o vers=3.0,username=<storage-account>,password=<key>,dir_mode=0777,file_mode=0777,serverino
+
+``` 
+
+
  
  
  
