@@ -265,6 +265,35 @@ sudo mount -t cifs //<storage-account>.file.core.windows.net/compartido /mnt/<fi
 ``` 
 
 
+ ## Cambiar el directorio de datos.
  
+ Planeamos cambiar el directorio de datos en el nodo maestro y mover de 
  
+ /var/lib/memsql/cecd8d51-6570-416f-bd6d-9aab34d26a9c/data   a   /disk01
  
+ ```sh
+ ## Detiene el cluster
+ sdb-admin stop-node --all
+ 
+ ## Verifica el estado
+ sdb-admin list-nodes
+ 
+ ## Mueve los datos
+ sudo cp -R -p <source_data_directory> <new_data_directory_path>
+ sudo cp -R -p /var/lib/memsql/cecd8d51-6570-416f-bd6d-9aab34d26a9c/data /disk01
+ 
+ ## Asegurate que el disco tenga permisos a memsql
+ sudo chown -R memsql:memsql /disk01
+ 
+ ## Actualiza la metadata con la carpeta data
+ sdb-admin update-config --key datadir --value <Path to data> --memsql-id <Node Memsql ID>
+ sdb-admin update-config --key datadir --value /disk01/data --memsql-id 783C28B24F
+ 
+ ## Verifica
+ sdb-admin describe-node --memsql-id <Node Memsql ID>
+ sdb-admin describe-node --memsql-id 783C28B24F
+ 
+ ## Levanta los servicios
+ sdb-admin start-node --all
+ 
+ ``` 
