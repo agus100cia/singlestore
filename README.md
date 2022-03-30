@@ -155,12 +155,12 @@ https://docs.singlestore.com/db/v7.6/en/reference/configuration-reference/cluste
 sudo yum -y install ntp
 sudo yum -y install numactl
 
-
-sudo sysctl -w vm.swappiness=10
-sudo sysctl -w vm.max_map_count=1000000000
-sudo sysctl -w vm.min_free_kbytes=658096
-sudo sysctl -w net.core.rmem_max=8388608
-sudo sysctl -w net.core.wmem_max=8388608
+sudo nano /etc/sysctl.conf
+vm.swappiness=10
+vm.max_map_count=1000000000
+vm.min_free_kbytes=658096
+net.core.rmem_max=8388608
+net.core.wmem_max=8388608
 
 ``` 
 
