@@ -159,8 +159,8 @@ sudo nano /etc/sysctl.conf
 vm.swappiness=10
 vm.max_map_count=1000000000
 vm.min_free_kbytes=658096
-net.core.rmem_max=8388608
-net.core.wmem_max=8388608
+net.core.rmem_max=212992
+net.core.wmem_max=212992
 
 ``` 
 
