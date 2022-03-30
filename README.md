@@ -365,3 +365,11 @@ Añadir en fstab
 
 
 ``` 
+
+
+Desmontar la unidad
+
+```sh
+umount -l /PATH/OF/BUSY-DEVICE
+umount -f /PATH/OF/BUSY-NFS (NETWORK-FILE-SYSTEM)
+``` 
