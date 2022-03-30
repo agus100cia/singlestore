@@ -302,3 +302,66 @@ sudo mount -t cifs //<storage-account>.file.core.windows.net/compartido /mnt/<fi
  sdb-admin start-node --all
  
  ``` 
+
+## Backup & Restore
+
+Para poder obtener un backup es necesario tener un directorio compartido o un Storage Container, S3, etc.
+
+```sh
+sudo yum install samba samba-client samba-common
+sudo mkdir -p /data01/bkp
+sudo chmod -R 755 /data01/bkp
+sudo cp /etc/samba/smb.conf /etc/samba/smb.conf.backup
+
+
+sudo firewall-cmd --permanent --zone=public --add-service=samba
+sudo firewall-cmd --reload
+
+sudo nano /etc/samba/smb.conf
+
+## Contenido
+workgroup = WORKGROUP
+
+[respaldo]
+path = /data01/bkp
+read only = no
+guest ok = yes
+browsable =yes
+writable = yes
+create mask = 0755
+directory mask = 0755
+
+```
+
+Crear un usuario de acceso
+
+```sh
+-a Crear nuevo usuario
+-n Sin clave
+
+sudo smbpasswd -a  azureuser
+
+sudo systemctl restart smb
+sudo systemctl restart nmb
+
+
+Comprobar:
+smbclient -L localhost
+
+``` 
+
+
+Montar la carpeta compartida en los nodos remotos
+
+```sh
+
+sudo mkdir -p /disk01/bkp
+
+sudo mount -t cifs -o username=azureuser //10.0.0.6/respaldo /disk01/bkp
+
+Añadir en fstab
+
+//192.168.1.10/documents /mnt cifs username=sambauser,password=pass 0 0
+
+
+``` 
