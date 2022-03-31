@@ -395,10 +395,11 @@ sudo nano /etc/samba/smb.conf
         read only = no
         writeable = yes
         browseable = yes
-        valid users = sadmin
+        valid users = azureuser
         create mask = 0644
         directory mask = 0755
-        force user = sadmin
+        force user = azureuser
+
     
 ```
 
