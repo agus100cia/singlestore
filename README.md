@@ -383,13 +383,13 @@ Montar la carpeta compartida en los nodos remotos
 
 ```sh
 
-sudo mkdir -p /datarespaldo
+sudo mkdir -p /respaldo/externo
 
-sudo mount -t cifs -o username=sadmin //192.168.0.240/respaldo /datarespaldo
+sudo mount -t cifs -o username=sadmin //192.168.0.240/respaldo /respaldo/externo
 
 Añadir en fstab
 
-//192.168.0.240//respaldo /datarespaldo cifs username=sadmin,password=pass 0 0
+//192.168.0.240//respaldo /respaldo/externo cifs username=sadmin,password=pass 0 0
 
 
 ``` 
