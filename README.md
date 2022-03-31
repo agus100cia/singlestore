@@ -388,17 +388,17 @@ sudo nano /etc/samba/smb.conf
     read only = no
     force create mode = 0660
     force directory mode = 2770
-    valid users = @sambashare @sadmin @azureuser
+    valid users = @sambashare @sadmin
 
 [allaccess]
-        path = /data/disk01/respaldo/externo
-        read only = no
-        writeable = yes
-        browseable = yes
-        valid users = azureuser
-        create mask = 0644
-        directory mask = 0755
-        force user = azureuser
+	path = /data/disk01/respaldo/azureUsuario01
+	read only = no
+	writeable = yes
+	browseable = yes
+	valid users = azureUsuario01
+	create mask = 0644
+	directory mask = 0755
+	force user = azureUsuario01
 
     
 ```
