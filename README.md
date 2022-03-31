@@ -385,7 +385,7 @@ Montar la carpeta compartida en los nodos remotos
 
 sudo mkdir -p /respaldo/externo
 
-sudo mount -t cifs -o username=sadmin //10.25.1.4/respaldo /respaldo/externo
+sudo mount -t cifs -o username=sadmin //10.25.1.4/externo /respaldo/externo
 
 Añadir en fstab
 
