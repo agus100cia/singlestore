@@ -378,11 +378,11 @@ Montar la carpeta compartida en los nodos remotos
 
 sudo mkdir -p /datarespaldo
 
-sudo mount -t cifs -o username=sadmin //10.0.0.6/respaldo /datarespaldo
+sudo mount -t cifs -o username=sadmin //192.168.0.240/respaldo /datarespaldo
 
 Añadir en fstab
 
-//10.0.0.6//respaldo /datarespaldo cifs username=sadmin,password=pass 0 0
+//192.168.0.240//respaldo /datarespaldo cifs username=sadmin,password=pass 0 0
 
 
 ``` 
