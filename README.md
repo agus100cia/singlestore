@@ -228,14 +228,43 @@ sdb-admin restart-node --all
  
  ## Backup
  
+ https://docs.singlestore.com/db/v7.6/en/reference/singlestore-tools-reference/sdb-admin-commands/create-backup.html
+ 
  Se puede obtener respaldos totales o incrementales. Los respaldos totales escriben datos en un sistema de archivos local file, s3, azure, Google Cloud.
  
  SingleStore no soporta un restore de base de datos desde una version nueva a una antigua.
  
  ```sh
- sdb-admin create-backup -r file:///path database1
+ sdb-admin create-backup -r [file:///path] [database1]
  
- ``` 
+ ```
+ 
+ Respaldos totales:
+ 
+ ```sh
+ sdb-admin create-backup --repository "s3://foo/bar?region=eu-central-1" database_1 database_2
+
+sdb-admin create-backup database_1 -r azure://foo/bar database_2
+
+sdb-admin create-backup -r file:///nfs db1
+
+sdb-admin create-backup -r "s3://foo/bar?region=eu-central-1" database_1
+
+sdb-admin create-backup -r "s3://foo/bar?region=eu-central-1" database_1 --backup-type split
+```
+
+Respaldos parciales
+
+```sh
+
+# Create initial incremental backup database_1_week_1
+sdb-admin create-backup -r "s3://foo/bar?region=eu-central-1" database_1 --backup-type init --backup-suffix week_1
+
+# Create differential backup database_1_week_1
+sdb-admin create-backup -r "s3://foo/bar?region=eu-central-1" database_1 --backup-type differential --backup-suffix week_1
+
+```
+   
  
  
  ## Agregar un Azure Blob Storage a Linux
