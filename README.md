@@ -314,7 +314,6 @@ sudo systemctl enable nmb.service
 
 ``` 
 
-
 ```sh
 
 sudo mkdir -p /data/disk01/respaldo
@@ -358,13 +357,15 @@ sudo nano /etc/samba/smb.conf
     force directory mode = 2770
     valid users = @sambashare @sadmin
 
-[externo]
-    path = /data/disk01/respaldo/externo
-    browseable = yes
-    read only = no
-    force create mode = 0660
-    force directory mode = 2770
-    valid users = externo @sadmin
+[allaccess]
+        path = /data/disk01/respaldo/azureUsuario01
+        read only = no
+        writeable = yes
+        browseable = yes
+        valid users = azureUsuario01
+        create mask = 0644
+        directory mask = 0755
+        force user = azureUsuario01
     
 ```
 
@@ -385,7 +386,7 @@ Montar la carpeta compartida en los nodos remotos
 
 sudo mkdir -p /respaldo/externo
 
-sudo mount -t cifs -o username=sadmin //10.25.1.4/externo /respaldo/externo
+sudo mount -t cifs -o username=azureUsuario01,password=*********,dir_mode=0777,file_mode=0777 //10.25.1.4/allaccess /respaldo/respaldo
 
 Añadir en fstab
 
