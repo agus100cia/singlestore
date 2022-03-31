@@ -321,7 +321,7 @@ sudo useradd -M -d /respaldo/externo -s /usr/sbin/nologin -G sambashare externo
 
 sudo mkdir -p /respaldo/externo
 sudo chown externo:sambashare /respaldo/externo
-sudo chmod -R 2770 /respaldo/externo
+sudo chmod 2770 /respaldo/externo
 ## Crea la clave
 sudo smbpasswd -a externo
 ## Habilita al usuario
@@ -330,17 +330,34 @@ sudo smbpasswd -e externo
 ``` 
 
 ```sh
+
+sudo useradd -M -d /respaldo/users -s /usr/sbin/nologin -G sambashare sadmin
+sudo smbpasswd -a sadmin
+sudo smbpasswd -e sadmin
+sudo mkdir -p /respaldo/users
+sudo chown -R sadmin:sambashare /respaldo/users
+sudo chmod 2770 /respaldo/users
+
+``` 
+
+```sh
 sudo nano /etc/samba/smb.conf
 
-
-[externo]
-    path = /respaldo/externo
-    writable = yes
+[users]
+    path = /respaldo/users
     browseable = yes
     read only = no
     force create mode = 0660
     force directory mode = 2770
-    valid users = externo
+    valid users = @sambashare @sadmin
+
+[externo]
+    path = /respaldo/externo
+    browseable = yes
+    read only = no
+    force create mode = 0660
+    force directory mode = 2770
+    valid users = externo @sadmin
     
 ```
 
@@ -361,7 +378,7 @@ Montar la carpeta compartida en los nodos remotos
 
 sudo mkdir -p /datarespaldo
 
-sudo mount -t cifs -o username=externo //192.168.0.240/externo /datarespaldo
+sudo mount -t cifs -o username=sadmin //192.168.0.240/respaldo /datarespaldo
 
 Añadir en fstab
 
