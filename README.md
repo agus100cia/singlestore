@@ -420,7 +420,7 @@ Montar la carpeta compartida en los nodos remotos
 
 sudo mkdir -p /respaldo/externo
 
-sudo mount -t cifs -o username=azureUsuario01,password=*********,dir_mode=0777,file_mode=0777 //10.25.1.4/allaccess /respaldo/respaldo
+sudo mount -t cifs -o username=azureUsuario01,password=*********,dir_mode=0777,file_mode=0777 //10.25.1.4/allaccess /respaldo/externo
 
 Añadir en fstab
 
