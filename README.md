@@ -317,18 +317,18 @@ sudo systemctl enable nmb.service
 
 ```sh
 
-sudo mkdir -p /respaldo
+sudo mkdir -p /data/disk01/respaldo
 sudo groupadd sambashare 
-sudo chgrp sambashare /respaldo
-sudo useradd -M -d /respaldo/externo -s /usr/sbin/nologin -G sambashare externo
+sudo chgrp sambashare /data/disk01/respaldo
+sudo useradd -M -d /data/disk01/respaldo/externo -s /usr/sbin/nologin -G sambashare externo
 
 ``` 
 
 ```sh
 
-sudo mkdir -p /respaldo/externo
-sudo chown externo:sambashare /respaldo/externo
-sudo chmod 2770 /respaldo/externo
+sudo mkdir -p /data/disk01/respaldo/externo
+sudo chown externo:sambashare /data/disk01/respaldo/externo
+sudo chmod 2770 /data/disk01/respaldo/externo
 ## Crea la clave
 sudo smbpasswd -a externo
 ## Habilita al usuario
@@ -338,12 +338,12 @@ sudo smbpasswd -e externo
 
 ```sh
 
-sudo useradd -M -d /respaldo/users -s /usr/sbin/nologin -G sambashare sadmin
+sudo useradd -M -d /data/disk01/respaldo/users -s /usr/sbin/nologin -G sambashare sadmin
 sudo smbpasswd -a sadmin
 sudo smbpasswd -e sadmin
-sudo mkdir -p /respaldo/users
-sudo chown -R sadmin:sambashare /respaldo/users
-sudo chmod 2770 /respaldo/users
+sudo mkdir -p /data/disk01/respaldo/users
+sudo chown -R sadmin:sambashare /data/disk01/respaldo/users
+sudo chmod 2770 /data/disk01/respaldo/users
 
 ``` 
 
@@ -351,7 +351,7 @@ sudo chmod 2770 /respaldo/users
 sudo nano /etc/samba/smb.conf
 
 [users]
-    path = /respaldo/users
+    path = /data/disk01/respaldo/users
     browseable = yes
     read only = no
     force create mode = 0660
@@ -359,7 +359,7 @@ sudo nano /etc/samba/smb.conf
     valid users = @sambashare @sadmin
 
 [externo]
-    path = /respaldo/externo
+    path = /data/disk01/respaldo/externo
     browseable = yes
     read only = no
     force create mode = 0660
