@@ -235,7 +235,11 @@ sdb-admin restart-node --all
  SingleStore no soporta un restore de base de datos desde una version nueva a una antigua.
  
  ```sh
+ ## Backup
  sdb-admin create-backup -r [file:///path] [database1]
+ 
+ ## Restore
+ sdb-admin restore-backup [backup1] -r [azure://foo/bar]
  
  ```
  
