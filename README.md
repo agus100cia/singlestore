@@ -307,6 +307,13 @@ sudo mount -t cifs //<storage-account>.file.core.windows.net/compartido /mnt/<fi
 
 Para poder obtener un backup es necesario tener un directorio compartido o un Storage Container, S3, etc.
 
+```sh
+sudo yum install samba samba-client
+sudo systemctl enable smb.service
+sudo systemctl enable nmb.service
+
+``` 
+
 
 ```sh
 
