@@ -388,7 +388,7 @@ sudo nano /etc/samba/smb.conf
     read only = no
     force create mode = 0660
     force directory mode = 2770
-    valid users = @sambashare @sadmin
+    valid users = @sambashare @sadmin @azureuser
 
 [allaccess]
         path = /data/disk01/respaldo/externo
