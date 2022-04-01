@@ -242,7 +242,7 @@ sdb-admin restart-node --all
  memsql-admin list-backups --repository [file:///bkpdata/sharedfolder/STG_Equifax]
  
  ## Restore
- sdb-admin restore-backup [backup1] -r [azure://foo/bar]
+ memsql-admin restore-backup -r [file:///respaldo/respaldo/20220331/base] [BackupName]
  
  ```
  
