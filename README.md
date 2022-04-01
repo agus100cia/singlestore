@@ -238,6 +238,9 @@ sdb-admin restart-node --all
  ## Backup
  sdb-admin create-backup -r [file:///path] [database1]
  
+ ## Ver los backups
+ memsql-admin list-backups --repository [file:///bkpdata/sharedfolder/STG_Equifax]
+ 
  ## Restore
  sdb-admin restore-backup [backup1] -r [azure://foo/bar]
  
