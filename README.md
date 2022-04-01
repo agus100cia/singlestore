@@ -293,7 +293,7 @@ sudo mkdir -p /mnt/compartido
 sudo mount -t cifs //almacenamientoss.file.core.windows.net/compartido /mnt/compartido -o vers=3.0,username=almacenamientoss,password=*********,dir_mode=0777,file_mode=0777,serverino
 
 
-sudo mount -t cifs //<storage-account>.file.core.windows.net/compartido /mnt/<file-shared> -o vers=3.0,username=<storage-account>,password=<key>,dir_mode=0777,file_mode=0777,serverino
+sudo mount -t cifs //<storage-account>.file.core.windows.net/<shared-folder> /mnt/<file-shared> -o vers=3.0,username=<storage-account>,password=<key>,dir_mode=0777,file_mode=0777,serverino
 
 ``` 
 
