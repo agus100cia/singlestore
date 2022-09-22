@@ -439,3 +439,10 @@ Desmontar la unidad
 umount -l /PATH/OF/BUSY-DEVICE
 umount -f /PATH/OF/BUSY-NFS (NETWORK-FILE-SYSTEM)
 ``` 
+
+Inicia la web UI
+
+```sh
+sudo singlestoredb-studio > /var/log/singlestore/servicio.log 2>&1 &
+
+``` 
