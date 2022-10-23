@@ -446,3 +446,13 @@ Inicia la web UI
 sudo singlestoredb-studio > /var/log/singlestore/servicio.log 2>&1 &
 
 ``` 
+
+Reiniciar.
+
+Asegurate que los nodos no tengan el puerto 3306 utilizado
+
+```sh
+sdb-admin list-nodes
+sdb-admin restart-node --all --force -y
+
+``` 
